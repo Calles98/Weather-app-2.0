@@ -31,25 +31,27 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
     },
   });
 
+  // GPT FUNCTIONALITY (won't work when deployin to vercel)
+
   const results: Root = data.myQuery;
 
-  const dataToSend = CleanData(results, city);
+  // const dataToSend = CleanData(results, city);
 
-  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      weatherData: dataToSend,
-    }),
-  });
+  // const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     weatherData: dataToSend,
+  //   }),
+  // });
 
-  const GPTdata = await res.json();
+  // const GPTdata = await res.json();
 
-  const { content } = GPTdata;
+  // const { content } = GPTdata;
 
-  console.log(results);
+  // console.log(results);
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
@@ -67,10 +69,10 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             </p>
           </div>
 
-          <div className="m-2 mb-10">
-            {/* CallutCard */}
-            <CalloutCard message={content} />
-          </div>
+          {/* <div className="m-2 mb-10">
+          
+            <CallotCard message={content} />
+          </div> */}
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             {/* StatCard */}
